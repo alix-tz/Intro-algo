@@ -1,0 +1,34 @@
+1 Quelle version de Python faut-il utiliser ?
+Python 2
+Python 3
+N'importe quelle Python
+Il n'existe qu'une seule version de Python
+
+2. Qu'est-ce qu'une fonction built-in ?
+Une fonction qui permet de construire un objet
+Une fonction d'affichage
+Une fonction qui existe par défaut dans Python
+Une fonction de sauvegarde
+
+3. Dans l'ennoncé suivant, quel est le problème ?
+```
+print("hello world)
+  File "<stdin>", line 1
+    print("hello world)
+                      ^
+SyntaxError: EOL while scanning string literal
+```
+
+On n'utilise pas la bonne version de Python
+Python ne connaît pas la fonction appellée
+On a oublié de fermer la chaîne de caractères
+`hello world" sont des mots réservés
+
+4. Donné trois exemples de mots réservés
+>
+
+5. Quel est le type de "False":
+- string
+- float
+- boolean
+- 
