@@ -496,3 +496,160 @@ print(exo_index[4][0])
 # 4.5.5 Comment afficher "8"?
 print(exo_index[-1])
 
+
+# =======================
+# 5. Fonctions
+# =======================
+
+print('\n--------- exo 5.1 ---------')
+# 5.1 exo : créer une fonction nommée "est_egal", qui prend deux arguments (expression1 et expression2) et qui affiche "Ces deux valeurs sont égales" ou "Ces deux valeurs ne sont pas égales" en fonction du résultat de la comparaison des deux valeurs. 
+
+def est_egal(expression1, expression2):
+    if expression1 == expression2:
+        print("Ces deux valeurs sont égales")
+    else:
+        print("Ces deux valeurs ne sont pas égales")
+
+# on utilise la fonction pour la tester :
+est_egal("toto", "titi")
+est_egal(4, 5)
+est_egal(True, True)
+
+
+print('\n--------- exo 5.2 ---------')
+# 5.2 exo : créer une fonction recevant une chaîne de caractères et qui renvoie cette chaîne de caractères en séparant chaque caractère par un point.
+# Par exemple, "ma fonction" deviendra "m.a. .f.o.n.c.t.i.o.n."
+
+def ajoute_des_points(chaine_de_caracteres):
+    nouvelle_chaine = ""
+    for lettre in str(chaine_de_caracteres):
+        nouvelle_chaine += lettre
+        nouvelle_chaine += "."
+    return nouvelle_chaine
+
+# on utiliser la fonction pour la tester
+print(ajoute_des_points("ma fonction"))
+print(ajoute_des_points(True))
+
+print('\n--------- exo 5.3 ---------')
+# 5.3 exo : créer une fonction qui prend un caractère en argument et renvoie "-" si ce caractère est une consomne, "*" si c'est une voyelle, "=" si c'est autre chose. 
+def crypte_ce_caractere(caractere):
+    consomnes = "bcdfghjklmnpqrstvwxz"
+    voyelles = "AEIOUY"
+    # str.lower() permet de mettre une chaine de caractère en minuscules
+    if caractere.lower() in consomnes:
+        caractere_crypte = "-"
+    # str.upper() permet de mettre une chaine de caractère en majuscules
+    elif caractere.upper() in voyelles:
+        caractere_crypte = "*"
+    else:
+        caractere_crypte = "="
+    return caractere_crypte
+
+# on teste la fonction
+print(crypte_ce_caractere("y"))
+print(crypte_ce_caractere("p"))
+print(crypte_ce_caractere("µ"))
+
+
+
+print('\n--------- exo 5.4 ---------')
+# 5.4 exo : utiliser la fonction de l'exercice 5.3 sur une chaîne de caractères en affichant le résultat à chaque fois.
+ma_chaine_de_caracteres = "Salut, ça va ?"
+for lettre in ma_chaine_de_caracteres:
+    print(crypte_ce_caractere(lettre))
+
+
+print('\n--------- exo 5.5 ---------')
+# 5.5 exo : créer une fonction qui affiche les cinq premières lignes d'une table de multiplication choisie au hasard entre 1 et 20.
+import random
+
+def multiplication_aleatoire():
+    table = random.randint(1,20)
+    for multi in range(1,6):
+        print(table, "x", multi, "=", table*multi)
+
+# On teste la fonction plusieurs fois de suite
+multiplication_aleatoire()
+multiplication_aleatoire()
+multiplication_aleatoire()
+
+
+# =======================
+# 6. Listes et dictionnaires
+# =======================
+
+print('\n--------- exo 6.1 ---------')
+# 6.1 exo : créer une fonction qui prendre une chaine de caractères en entrée et renvoie cette chaine sous la forme d'une liste
+def transforme_en_liste(chaine_de_caracteres):
+    liste_de_caracteres = []
+    for lettre in chaine_de_caracteres:
+        liste_de_caracteres.append(lettre)
+    return liste_de_caracteres
+
+# on teste la fonction
+print(transforme_en_liste("Salut"))
+
+
+
+print('\n--------- exo 6.2 ---------')
+# 6.2 exo : créer une fonction qui prend une liste en entrée et qui renvoie cette même liste en ayant supprimé toutes les valeurs qui ne sont si ces entiers, ni des chaines de caractères.
+def fait_du_tri(liste_a_trier):
+    liste_triee = []
+    for element in liste_a_trier:
+        if type(element) == type(str()) or type(element) == type(int()):
+            liste_triee.append(element)
+    return liste_triee
+
+# on teste la fonction
+liste_test = [3,4, True, "hello", "...", [], 89.90]
+print(fait_du_tri(liste_test))
+
+
+print('\n--------- exo 6.3 ---------')
+# 6.3 exo : créer une fonction qui prend en entrée une liste ou une chaine de caractères, qui rassemble tous les éléments dont l'index est un nombre pair et tous les éléments dont l'index est un nombre impair et qui renvoie la concaténation de ces deux ensembles.
+# Par exemple : "abcd" deviendra ["a", "c", "b", "d"] 
+def separe_et_concatene(liste_a_traiter):
+    liste_delements_pair = []
+    liste_delements_impair = []
+    for element in liste_a_traiter:
+        if liste_a_traiter.index(element) % 2 == 0:
+            liste_delements_pair.append(element)
+        else:
+            liste_delements_impair.append(element)
+    return liste_delements_pair + liste_delements_impair
+
+# on teste la fonction
+print(separe_et_concatene("abcd"))
+
+print('\n--------- exo 6.4 ---------')
+# 6.4 exo : créer une fonction qui renvoie la liste de toutes les clefs d'un dictionnaire fourni en entrée.
+def fais_la_liste_des_clefs(dictionnaire_a_traiter):
+    liste_de_clefs = []
+    for clef in dictionnaire_a_traiter.keys():
+        liste_de_clefs.append(clef)
+    return liste_de_clefs
+
+# on teste la fonction
+print(fais_la_liste_des_clefs({"prenom": "Guido", "nom": "van Rossum", "naissance": 1956, "métier": "développeur", "nationalité": "néerlandaise"}))
+
+
+print('\n--------- exo 6.5 ---------')
+# 6.5 exo : soit la liste suivante :
+individus = [
+    {"prenom": "Guido", "nom": "van Rossum", "naissance": 1956, "métier": "développeur", "nationalité": "néerlandaise"},
+    {"prenom": "Taylor", "nom": "Swift", "naissance": 1989, "métier": "chanteuse", "nationalité": "américaine"},
+    {"prenom": "Omar", "nom": "Sy", "naissance": 1978, "métier": "acteur", "nationalité": "française"}
+]
+# écrire une fonction qui, pour chaque individu décrit dans la liste, affiche une phrase telle que pour
+# {"prenom": "Guido", "nom": "van Rossum", "naissance": 1956, "métier": "développeur", "nationalité": "néerlandaise"}
+# On obtiendra 
+# "Guido van Rossum est un(e) développeur âgé(e) de 64 ans de natioanlité néerlandaise.
+
+def construit_la_phrase(individu):
+    age = 2020 - individu["naissance"]
+    la_phrase = individu["prenom"] + " " + individu["nom"] + " est un(e) " + individu["métier"] + " âgé(e) de " + str(age) + " de nationalité " + individu["nationalité"] + "."
+    return la_phrase
+
+for individu in individus:
+    print(construit_la_phrase(individu))
